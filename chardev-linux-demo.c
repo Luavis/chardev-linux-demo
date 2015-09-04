@@ -139,3 +139,7 @@ int sprintf(char * buf, const char * fmt, ...) {
   return i;
 }
 
+MODULE_LICENSE("GPL");
+
+MODULE_AUTHOR("Luavis Kang");
+MODULE_DESCRIPTION("This module for studying character device driver(or module) meaning serail port device generally.");
