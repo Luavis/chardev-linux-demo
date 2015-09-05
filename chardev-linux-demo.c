@@ -7,10 +7,27 @@
 int init_module(void);
 void cleanup_module(void);
 
-static int device_open(struct inode *, struct file *);
-static int device_release(struct inode *, struct file *);
-static ssize_t device_read(struct file *, char *, size_t, loff_t *);
-static ssize_t device_write(struct file *, const char *, size_t, loff_t *);
+static int device_open(
+  struct inode *,
+  struct file *
+);
+
+static int device_release(
+  struct inode *,
+  struct file *
+);
+
+static ssize_t device_read(
+  struct file *,
+  char *,
+  size_t, loff_t *
+);
+
+static ssize_t device_write(
+  struct file *,
+  const char *,
+  size_t, loff_t *
+);
 
 int sprintf(char * buf, const char * fmt, ...);
 
@@ -65,7 +82,10 @@ void cleanup_module(void) {
  * char dev open callback
  */
 
-static int device_open(struct inode * inode, struct file * flip) {
+static int device_open(
+    struct inode * inode,
+    struct file * flip
+  ) {
   static int counter = 0;
 
   printk(KERN_INFO "Open device\n");
@@ -85,7 +105,10 @@ static int device_open(struct inode * inode, struct file * flip) {
   return OK;
 }
 
-static int device_release(struct inode * inode, struct file * file) {
+static int device_release(
+    struct inode * inode,
+    struct file * file
+  ) {
   
   is_open = false;
 
@@ -99,7 +122,7 @@ static ssize_t device_read(
     char * buffer,
     size_t length,
     loff_t * offset
-  ){
+  ) {
   
   int read_len = 0;
 
@@ -142,4 +165,8 @@ int sprintf(char * buf, const char * fmt, ...) {
 MODULE_LICENSE("GPL");
 
 MODULE_AUTHOR("Luavis Kang");
-MODULE_DESCRIPTION("This module for studying character device driver(or module) meaning serail port device generally.");
+MODULE_DESCRIPTION(
+  "This module for studying "
+  "character device driver(or module) "
+  "meaning serail port device generally."
+);
